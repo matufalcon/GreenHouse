@@ -19,7 +19,7 @@ class Cabaña extends BaseController
         $fechaSalida = trim($this->request->getPost('fechaSalida'));
 
         if($fechaEntrada <= $fechaSalida){
-            $data['cabañas'] = $cabañaModel->findAll();
+            $data['cabañas'] = $cabañaModel->obtenerCabañasDisponiblesFechas($fechaEntrada, $fechaSalida);
             echo view('header');
             echo view('navbar');
             echo view('reservar-cabaña', $data);

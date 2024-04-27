@@ -1,5 +1,6 @@
+
 <!-- footer -->
-<footer class="bg-dark text-light py-4">
+<footer class="bg-dark text-light py-4 footer">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-3">
