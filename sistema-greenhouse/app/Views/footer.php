@@ -1,10 +1,10 @@
 
 <!-- footer -->
-<footer class="bg-dark text-light py-4 footer">
+<footer class="bg-dark text-light py-4 ">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-3">
-                <img src="assets/img/logo.png" alt="Logo Green House" class="img-fluid">
+                <img src="<?= base_url('assets/img/logo.png') ?>" alt="Logo Green House" class="img-fluid" style="max-width: 200px; max-height: 200px;">
             </div>
             <div class="col-md-9">
                 <div class="row">

@@ -20,7 +20,7 @@ class CabañaModel extends Model
                     ->findAll();
     }
     
-    public function obtenerCabañasDisponiblesFechas($fechaLlegada, $fechaSalida)
+    public function consultarCabañas($fechaLlegada, $fechaSalida)
     {
         return $this->select('cabaña.*, capacidad.descripcion AS capacidad, estado.descripcion AS estado')
                     ->join('reserva', 'reserva.`cabaña-id` = cabaña.`cabaña-id`', 'left')
@@ -31,5 +31,8 @@ class CabañaModel extends Model
                     ->orWhere('reserva.`fecha-salida` <', $fechaLlegada)
                     ->findAll();
     }
+
+    
+
 
 }
