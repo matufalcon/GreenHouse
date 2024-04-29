@@ -23,11 +23,11 @@ class Cabaña extends BaseController
             $data['cabañas'] = $cabañaModel->consultarCabañas($fechaEntrada, $fechaSalida);
             echo view('header');
             echo view('navbar');
-            echo view('reservar-cabaña', $data);
+            echo view('consultar-cabañas', $data);
             echo view('footer');
         }else{            
             session()->setFlashdata('error', 'Debe introducir una fecha valida.');
-            return $this->response->redirect(base_url().'reservar');
+            return $this->response->redirect(base_url().'consultar-cabanas');
         }
     }   
         

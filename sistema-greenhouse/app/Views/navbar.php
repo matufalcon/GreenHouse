@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0a3440;">
         <div class="container">
             <a class="navbar-brand" href="<?= base_url() ?>">
@@ -7,18 +8,21 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto" id="item">
                 <li class="nav-item mx-2">
-                    <a class="btn btn-primary" style="background-color: #27D99D;" href="<?= base_url('inicio') ?>">Inicio</a>
+                    <a class="btn btn-primary" style="background-color: #27D99D; font-weight: bold;" href="<?= base_url('inicio') ?>"><i class="bi bi-house-door"></i> Inicio</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="btn btn-primary" style="background-color: #27D99D;" href="#">Explorar cabañas</a>
+                    <a class="btn btn-primary" style="background-color: #27D99D; font-weight: bold;" href="#"><i class="bi bi-signal"></i> Consultas</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="btn btn-primary" style="background-color: #27D99D;" href="<?= base_url('reservar') ?>">Reservas</a>
+                    <a class="btn btn-primary" style="background-color: #27D99D; font-weight: bold;" href="<?= base_url('consultar-cabanas') ?>"><i class="bi bi-house-heart-fill"></i> Explorar cabañas</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="btn btn-primary" style="background-color: #27D99D;" href="<?= base_url('inicio') ?>#conocenos">Conócenos</a>
+                    <a class="btn btn-primary" style="background-color: #27D99D; font-weight: bold;" href="<?= base_url('inicio') ?>#conocenos"><i class="bi bi-tree-fill"></i> Conócenos</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="btn btn-primary" style="background-color: #27D99D; font-weight: bold;" href="#"><i class="bi bi-person-bounding-box"></i> Acceso de usuario</a>
                 </li>
             </ul>
         </div>

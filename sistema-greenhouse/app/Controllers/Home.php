@@ -12,11 +12,11 @@ class Home extends BaseController
         echo view('footer');
     }
 
-    public function reservar()
+    public function consultar_cabañas()
     {
         echo view('header');
         echo view('navbar');
-        echo view('reservar-cabaña');
+        echo view('consultar-cabañas');
         echo view('footer');
     }
 }

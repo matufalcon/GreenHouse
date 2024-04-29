@@ -1,6 +1,29 @@
- body {
-     background-color: #27D99D;
- }
+
+ #principio{
+    margin-top: 1px; /* Altura del navbar */
+    display: flex;
+    align-items: center;
+    justify-content:flex-end;
+    padding: 11%;
+    text-align: center;
+    flex-direction: column;
+    height: 100vh;
+    color: white;/*color de la letra*/
+    background-image: linear-gradient(
+        0deg,
+        rgba(0,0,0,0.5), /*fondo gradiente de la imagen (se ve un toque mas oscuro)*/
+        rgba(0,0,0,0.5) /*para que se pueda leer el texto*/
+    ),url(../img/presentacion.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; /*para que siempre centre la imagen*/
+}
+
+#parrafo {
+    padding: 5%;
+    font-size: 20px;
+    text-align: justify;
+}
 
  .footer {
      position: absolute;
