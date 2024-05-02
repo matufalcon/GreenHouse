@@ -32,6 +32,14 @@ class CabañaModel extends Model
                     ->findAll();
     }
 
+    public function buscarCabañaId($id)
+    {
+        return $this->select('cabaña.*, capacidad.descripcion AS capacidad, estado.descripcion AS estado')
+                    ->join('capacidad', 'capacidad.capacidad-id = cabaña.capacidad-id')
+                    ->join('estado', 'estado.estado-id = cabaña.estado-id')
+                    ->where('cabaña.cabaña-id', $id)
+                    ->first();
+    }
     
 
 

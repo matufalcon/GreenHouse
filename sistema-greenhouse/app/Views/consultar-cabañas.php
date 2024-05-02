@@ -33,11 +33,11 @@
                         <img src="assets/img/<?= $cabaña["imagen"] ?>" class="card-img-top" alt="Cabaña">
                         <div class="card-body">
 
-                            <h5 class="card-title"><?= $cabaña["nombre"] ?></h5>
+                            <h5 class="card-title text-center"><?= $cabaña["nombre"] ?></h5>
 
-                            <p class="card-text">Características de la cabaña: <?= $cabaña["descripcion"] ?></p>
+                            <p class="card-text text-justify">Características de la cabaña: <?= $cabaña["descripcion"] ?></p>
 
-                            <a href="<?= base_url('detalles-cabana/' . $cabaña['cabaña-id']) ?>" class="btn btn-primary">Ver detalles</a>
+                            <a href="<?= base_url('detalles-cabana/' . $cabaña['cabaña-id']) ?>" class="btn btn-primary text-center">Ver detalles</a>
                         </div>
                     </div>
                 </div>

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-04-2024 a las 21:33:38
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 02-05-2024 a las 02:51:24
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.1.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,7 +42,9 @@ CREATE TABLE `cabaña` (
 --
 
 INSERT INTO `cabaña` (`cabaña-id`, `nombre`, `descripcion`, `imagen`, `precio`, `estado-id`, `capacidad-id`) VALUES
-(1, 'cabaña pepe', 'cabaña con pileta', 'cabaña-presentacion.jpg', 2000.00, 1, 1);
+(1, 'Mburucuyá Poty', 'Este alojamiento único ofrece un amplio espacio para disfrutar con tus seres queridos. Es un quincho independiente con dos dormitorios y un dormitorio principal con ventilador de techo, con capacidad para diez personas. Además, una amplia parrilla para asados, un comedor con ventilador de techo, un fogón y horno de hierro a leña, y un garaje interno para cuatro autos.\r\n\r\n\r\n\r\n\r\n\r\n', 'cabaña1.jpeg', 2000.00, 1, 1),
+(2, 'Rincón de Montaña', 'Una acogedora cabaña de tres ambientes con capacidad para cinco personas. Incluye un amplio dormitorio con cama matrimonial, otro dormitorio con camas individuales o matrimonial, y un luminoso living comedor con cómodos sillones y una acogedora estufa a leña. Perfecta para disfrutar de la naturaleza en familia o con amigos.', 'cabaña1.0.jpg', 309111.00, 1, 2),
+(3, 'Refugio Sereno', 'Una encantadora cabaña de dos ambientes, ideal para una escapada romántica o un retiro tranquilo. Incluye una acogedora sala de estar con cocina integrada, un baño completo y un dormitorio con una cómoda cama matrimonial. Decorada con un estilo rústico y cálido, ofrece un ambiente acogedor para relajarse y disfrutar de la naturaleza circundante.', 'cabaña4.jpg', 309111.00, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -60,7 +62,9 @@ CREATE TABLE `capacidad` (
 --
 
 INSERT INTO `capacidad` (`capacidad-id`, `descripcion`) VALUES
-(1, 'Grande');
+(1, 'Grande'),
+(2, 'Mediana'),
+(3, 'Pequeña');
 
 -- --------------------------------------------------------
 
@@ -194,13 +198,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `cabaña`
 --
 ALTER TABLE `cabaña`
-  MODIFY `cabaña-id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cabaña-id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `capacidad`
 --
 ALTER TABLE `capacidad`
-  MODIFY `capacidad-id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `capacidad-id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `estado`

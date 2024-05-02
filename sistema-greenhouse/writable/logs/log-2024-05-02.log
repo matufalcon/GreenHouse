@@ -1,0 +1,92 @@
+CRITICAL - 2024-05-02 00:04:35 --> ErrorException: Undefined array key "capacidad"
+[Method: GET, Route: detalles-cabana/3]
+in APPPATH\Views\detalles-cabaña.php on line 14.
+ 1 APPPATH\Views\detalles-cabaña.php(14): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "capacidad"', 'C:\\xampp\\htdocs\\sistema-greenhouse\\app\\Views\\detalles-cabaña.php', 14)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\sistema-greenhouse\\app\\Views\\detalles-cabaña.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('detalles-cabaña', [], true)
+ 5 APPPATH\Controllers\Cabaña.php(48): view('detalles-cabaña', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Cabaña->detalles('3')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-02 00:04:48 --> ErrorException: Undefined array key "capacidad.capacidad"
+[Method: GET, Route: detalles-cabana/3]
+in APPPATH\Views\detalles-cabaña.php on line 14.
+ 1 APPPATH\Views\detalles-cabaña.php(14): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "capacidad.capacidad"', 'C:\\xampp\\htdocs\\sistema-greenhouse\\app\\Views\\detalles-cabaña.php', 14)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\sistema-greenhouse\\app\\Views\\detalles-cabaña.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('detalles-cabaña', [], true)
+ 5 APPPATH\Controllers\Cabaña.php(48): view('detalles-cabaña', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Cabaña->detalles('3')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-02 00:08:36 --> ErrorException: Undefined array key "capacidad"
+[Method: GET, Route: detalles-cabana/3]
+in APPPATH\Views\detalles-cabaña.php on line 14.
+ 1 APPPATH\Views\detalles-cabaña.php(14): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "capacidad"', 'C:\\xampp\\htdocs\\sistema-greenhouse\\app\\Views\\detalles-cabaña.php', 14)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\sistema-greenhouse\\app\\Views\\detalles-cabaña.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('detalles-cabaña', [], true)
+ 5 APPPATH\Controllers\Cabaña.php(48): view('detalles-cabaña', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Cabaña->detalles('3')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-02 00:09:20 --> ErrorException: Undefined array key "capacidad"
+[Method: GET, Route: detalles-cabana/3]
+in APPPATH\Views\detalles-cabaña.php on line 14.
+ 1 APPPATH\Views\detalles-cabaña.php(14): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "capacidad"', 'C:\\xampp\\htdocs\\sistema-greenhouse\\app\\Views\\detalles-cabaña.php', 14)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\sistema-greenhouse\\app\\Views\\detalles-cabaña.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('detalles-cabaña', [], true)
+ 5 APPPATH\Controllers\Cabaña.php(48): view('detalles-cabaña', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Cabaña->detalles('3')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-05-02 00:09:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-02 00:09:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-02 00:09:26 --> ErrorException: Undefined array key "capacidad"
+[Method: GET, Route: detalles-cabana/2]
+in APPPATH\Views\detalles-cabaña.php on line 14.
+ 1 APPPATH\Views\detalles-cabaña.php(14): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "capacidad"', 'C:\\xampp\\htdocs\\sistema-greenhouse\\app\\Views\\detalles-cabaña.php', 14)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\sistema-greenhouse\\app\\Views\\detalles-cabaña.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('detalles-cabaña', [], true)
+ 5 APPPATH\Controllers\Cabaña.php(48): view('detalles-cabaña', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Cabaña->detalles('2')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-05-02 00:14:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-02 00:14:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-02 00:14:40 --> ErrorException: Undefined array key "capacidad"
+[Method: GET, Route: detalles-cabana/2]
+in APPPATH\Views\detalles-cabaña.php on line 14.
+ 1 APPPATH\Views\detalles-cabaña.php(14): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "capacidad"', 'C:\\xampp\\htdocs\\sistema-greenhouse\\app\\Views\\detalles-cabaña.php', 14)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\sistema-greenhouse\\app\\Views\\detalles-cabaña.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('detalles-cabaña', [], true)
+ 5 APPPATH\Controllers\Cabaña.php(48): view('detalles-cabaña', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Cabaña->detalles('2')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-05-02 00:48:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-02 00:48:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-02 00:48:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-02 00:49:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

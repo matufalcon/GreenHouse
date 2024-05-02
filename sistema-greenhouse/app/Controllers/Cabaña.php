@@ -34,7 +34,7 @@ class Cabaña extends BaseController
     public function detalles($id)
     {
         $cabañaModel = new CabañaModel();
-        $cabaña = $cabañaModel->find($id);
+        $cabaña = $cabañaModel->buscarCabañaId($id);
 
         if ($cabaña === null) {
             // Manejo de error si no se encuentra la cabaña

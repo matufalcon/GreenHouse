@@ -11,7 +11,7 @@
         <div class="card">
             <div class="card-body">
             <h2><?= $cabaña['nombre'] ?></h2>
-                        <p>Capacidad: <?= $cabaña['capacidad-id'] ?> personas</p>
+                        <p>Capacidad: <?= $cabaña["capacidad"] ?></p>
                         <p>🛖Cocina totalmente equipada</p>
                         <p>🛖Baño con bañera</p>
                         <p>🛖Smart tv</p>
