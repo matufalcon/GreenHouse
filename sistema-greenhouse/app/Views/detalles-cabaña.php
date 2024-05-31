@@ -10,7 +10,7 @@
         <div class="col-md-6">
         <div class="card">
             <div class="card-body">
-            <h2><?= $cabaña['nombre'] ?></h2>
+            <h2 class="text-secondary"><?= $cabaña['nombre'] ?></h2>
                         <p>Capacidad: <?= $cabaña["capacidad"] ?></p>
                         <p>🛖Cocina totalmente equipada</p>
                         <p>🛖Baño con bañera</p>

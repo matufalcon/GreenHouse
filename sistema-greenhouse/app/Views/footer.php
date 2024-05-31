@@ -1,10 +1,13 @@
-
+<div class="content">
+    <!-- Contenido principal de la página -->
+</div>
 <!-- footer -->
-<footer class="bg-dark text-light py-4 ">
+<footer class="bg-dark text-light py-4">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-3">
-                <img src="<?= base_url('assets/img/logo.png') ?>" alt="Logo Green House" class="img-fluid" style="max-width: 200px; max-height: 200px;">
+                <img src="<?= base_url('assets/img/logo.png') ?>" alt="Logo Green House" class="img-fluid"
+                    style="max-width: 200px; max-height: 200px;">
             </div>
             <div class="col-md-9">
                 <div class="row">
@@ -45,7 +48,9 @@
     </div>
 </footer>
 
-    
-    <script src="<?php echo base_url('assets/js/bootstrap.bundle.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/bootstrap.bundle.min.js'); ?>"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
 </body>
+
 </html>

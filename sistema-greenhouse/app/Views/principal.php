@@ -2,7 +2,7 @@
 
 <section id="principio">
     <h1>Toma un descanso y disfruta de una estadía en una cabaña</h1>
-    <a href="#" class="btn btn-primary" style="background-color: #27D99D;font-weight: bold;color:#0a3440;">RESERVA AHORA</a>
+    <a href="<?= base_url()?>consultar-cabanas" class="btn btn-primary" style="background-color: #27D99D;font-weight: bold;color:#0a3440;">RESERVA AHORA</a>
 </section>
 
 <!-- conocenos -->
