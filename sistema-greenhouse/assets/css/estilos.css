@@ -42,14 +42,15 @@
 
  .gradient-custom-2 {
     /* fallback for old browsers */
-    background: #fccb90;
-    
+    background: #0a3440;
+
+    background-color: #0a3440;
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-    
+    background: -webkit-linear-gradient(to right, #6EB157, #1B9142, #327CC1, #1C5A95);
+
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-    }
+    background: linear-gradient(to right, #6EB157, #1B9142, #327CC1, #1C5A95);
+}
     
     @media (min-width: 768px) {
     .gradient-form {

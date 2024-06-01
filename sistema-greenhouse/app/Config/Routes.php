@@ -13,8 +13,10 @@ $routes->post('/consultar-cabanas', 'Cabaña::ver_cabañas');
 
 $routes->get('detalles-cabana/(:num)', 'Cabaña::detalles/$1');
 
-$routes->get('/login', 'Auth::login');
-$routes->post('/login', 'Auth::login');
-$routes->get('/register', 'Auth::register');
-$routes->post('/register', 'Auth::register');
-$routes->get('/logout', 'Auth::logout');
+/*Iniciar sesion */
+$routes->get('/login', 'Usuario::createLogin');
+$routes->post('/login', 'Usuario::login');
+/*Registrarse */
+$routes->get('/register', 'Usuario::createRegister');
+$routes->post('/register', 'Usuario::register');
+$routes->get('/logout', 'Usuario::logout');

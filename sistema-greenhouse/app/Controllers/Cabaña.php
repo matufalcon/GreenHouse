@@ -16,8 +16,8 @@ class Cabaña extends BaseController
     {
         $cabañaModel = new CabañaModel();
         $fechaActual = date("Y-m-d");
-        $fechaEntrada = trim($this->request->getPost('fechaEntrada'));
-        $fechaSalida = trim($this->request->getPost('fechaSalida'));
+        $fechaEntrada = $this->request->getPost('fechaEntrada');
+        $fechaSalida = $this->request->getPost('fechaSalida');
 
         if($fechaEntrada <= $fechaSalida && $fechaEntrada > $fechaActual){
             $data['cabañas'] = $cabañaModel->consultarCabañas($fechaEntrada, $fechaSalida);

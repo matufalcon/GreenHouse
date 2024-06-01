@@ -14,27 +14,27 @@ class CabañaModel extends Model
 
     public function obtenerTodasLasCabañas()
     {
-        return $this->select('cabaña.*, estado.descripcion AS nombre_estado, capacidad.descripcion AS capacidad')
+        return $this->select('cabaña.*, estado.estado-nombre AS nombre_estado, capacidad.capacidad-nombre AS capacidad')
                     ->join('estado', 'estado.estado-id = cabaña.estado-id')
                     ->join('capacidad', 'capacidad.capacidad-id = cabaña.capacidad-id')
                     ->findAll();
     }
     
-    public function consultarCabañas($fechaLlegada, $fechaSalida)
+    public function consultarCabañas($fechaEntrada, $fechaSalida)
     {
-        return $this->select('cabaña.*, capacidad.descripcion AS capacidad, estado.descripcion AS estado')
+        return $this->select('cabaña.*, capacidad.capacidad-nombre AS capacidad, estado.estado-nombre AS estado')
                     ->join('reserva', 'reserva.`cabaña-id` = cabaña.`cabaña-id`', 'left')
                     ->join('capacidad', 'capacidad.`capacidad-id` = cabaña.`capacidad-id`')
                     ->join('estado', 'estado.`estado-id` = cabaña.`estado-id`')
                     ->where('reserva.`reserva-id` IS NULL')
-                    ->orWhere('reserva.`fecha-llegada` >', $fechaSalida)
-                    ->orWhere('reserva.`fecha-salida` <', $fechaLlegada)
+                    ->orWhere('reserva.`fecha-entrada` >', $fechaSalida)
+                    ->orWhere('reserva.`fecha-salida` <', $fechaEntrada)
                     ->findAll();
     }
 
     public function buscarCabañaId($id)
     {
-        return $this->select('cabaña.*, capacidad.descripcion AS capacidad, estado.descripcion AS estado')
+        return $this->select('cabaña.*, capacidad.capacidad-nombre AS capacidad, estado.estado-nombre AS estado')
                     ->join('capacidad', 'capacidad.capacidad-id = cabaña.capacidad-id')
                     ->join('estado', 'estado.estado-id = cabaña.estado-id')
                     ->where('cabaña.cabaña-id', $id)

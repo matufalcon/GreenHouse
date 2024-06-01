@@ -1,8 +1,8 @@
+<section style="background-color: #0a3440;">
 <!-- imagen presentacion -->
-
 <section id="principio">
     <h1>Toma un descanso y disfruta de una estadía en una cabaña</h1>
-    <a href="<?= base_url()?>consultar-cabanas" class="btn btn-primary" style="background-color: #27D99D;font-weight: bold;color:#0a3440;">RESERVA AHORA</a>
+    <a href="<?= base_url()?>consultar-cabanas" class="btn btn-primary btn-block fa-lg gradient-custom-2" style="background-color: #27D99D;font-weight: bold;color:white;">RESERVA AHORA</a>
 </section>
 
 <!-- conocenos -->
@@ -35,7 +35,7 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">Mburucuyá Poty</h5>
                     <p class="card-text">Este alojamiento único ofrece un amplio espacio para disfrutar con tus seres queridos. Es un quincho independiente con dos dormitorios y un dormitorio principal con ventilador de techo, con capacidad para diez personas. Además, una amplia parrilla para asados, un comedor con ventilador de techo, un fogón y horno de hierro a leña, y un garaje interno para cuatro autos.</p>
-                    <a href="#" class="btn btn-primary d-block mx-auto">Reservar</a>
+                    <a href="#" class="btn btn-primary btn-block fa-lg gradient-custom-2 d-block mx-auto" style="color: black;">Reservar</a>
                 </div>
             </div>
         </div>
@@ -45,9 +45,10 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">Refugio Sereno</h5>
                     <p class="card-text">Una encantadora cabaña de dos ambientes, ideal para una escapada romántica o un retiro tranquilo. Incluye una acogedora sala de estar con cocina integrada, un baño completo y un dormitorio con una cómoda cama matrimonial. Decorada con un estilo rústico y cálido, ofrece un ambiente acogedor para relajarse y disfrutar de la naturaleza circundante.</p>
-                    <a href="#" class="btn btn-primary d-block mx-auto">Reservar</a>
+                    <a href="#" class="btn btn-primary btn-block fa-lg gradient-custom-2 d-block mx-auto" style="color: black;">Reservar</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+</section>

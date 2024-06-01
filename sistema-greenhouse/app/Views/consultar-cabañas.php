@@ -1,3 +1,4 @@
+<section style="background-color: #27D99D;">
 <div class="container mt-5">
     <h2 class="text-center mb-4" style="color: white;">Consultar cabañas disponibles</h2>
     <div class="row justify-content-center">
@@ -45,3 +46,4 @@
         <?php endif; ?>
     </div>
 </div>
+</section>
