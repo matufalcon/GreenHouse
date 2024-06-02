@@ -10,8 +10,8 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <h2 class="text-secondary"><?= $cabaña['nombre'] ?></h2>
-                    <p>Capacidad: <?= $cabaña["capacidad"] ?></p>
+                    <h2 class="text-secondary"><?= $cabaña->{'nombre'} ?></h2>
+                    <p>Capacidad: <?= $cabaña->{"capacidad"} ?></p>
                     <p>🛖Cocina totalmente equipada</p>
                     <p>🛖Baño con bañera</p>
                     <p>🛖Smart tv</p>
@@ -20,7 +20,7 @@
                     <p>🛖Mesas y sillas de jardín</p>
                     <p>🛖Estacionamiento al lado de la cabaña</p>
                 </div>
-                <?php if (session()->get('isLoggedIn')): ?>
+                <?php if (session()->get('logged_in')): ?>
                     <a href="#" class="btn btn-primary" style="background-color: #27D99D;">Reserva ahora</a>
                 <?php else: ?>
                     <a href="<?= base_url()?>login" class="btn btn-primary" style="background-color: #27D99D;">Reserva ahora</a>
@@ -30,7 +30,7 @@
         </div>
         <div class="col-md-6">
             <br>
-            <img src="<?= base_url('assets/img/' . $cabaña['imagen']) ?>" class="img-fluid" alt="Imagen de cabaña">
+            <img src="<?= base_url('assets/img/' . $cabaña->{'imagen'}) ?>" class="img-fluid" alt="Imagen de cabaña">
         </div>
 
     </div>

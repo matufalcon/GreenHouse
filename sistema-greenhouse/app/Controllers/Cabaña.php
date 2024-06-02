@@ -1,17 +1,10 @@
 <?php
-
 namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\CabañaModel;
 
-
 class Cabaña extends BaseController
 {
-    public function index()
-    {
-
-    }
-
     public function ver_cabañas()
     {
         $cabañaModel = new CabañaModel();
@@ -25,7 +18,7 @@ class Cabaña extends BaseController
             echo view('navbar');
             echo view('consultar-cabañas', $data);
             echo view('footer');
-        }else{            
+        } else {
             session()->setFlashdata('error', 'Debe introducir una fecha valida.');
             return $this->response->redirect(base_url().'consultar-cabanas');
         }
@@ -37,7 +30,6 @@ class Cabaña extends BaseController
         $cabaña = $cabañaModel->buscarCabañaId($id);
 
         if ($cabaña === null) {
-            // Manejo de error si no se encuentra la cabaña
             return redirect()->to(base_url('cabañas-disponibles'))->with('error', 'Cabaña no encontrada');
         }
 
@@ -48,6 +40,4 @@ class Cabaña extends BaseController
         echo view('detalles-cabaña', $data); 
         echo view('footer');
     }
-    
-    
 }

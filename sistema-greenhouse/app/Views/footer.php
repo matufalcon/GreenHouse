@@ -1,3 +1,4 @@
+    <div class="content"></div>
     <!-- footer -->
     <footer class="bg-dark text-light py-4">
         <div class="container">

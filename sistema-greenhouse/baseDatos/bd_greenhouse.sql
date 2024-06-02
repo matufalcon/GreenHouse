@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-06-2024 a las 00:32:04
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.1.25
+-- Tiempo de generación: 02-06-2024 a las 03:12:11
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,37 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bd_greenhouse`
 --
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `BuscarCabañaId` (IN `cabañaId` INT)   BEGIN
+    SELECT c.*, cap.`capacidad-nombre` AS capacidad, e.`estado-nombre` AS estado
+    FROM `cabañas` c
+    JOIN `capacidad` cap ON cap.`capacidad-id` = c.`capacidad-id`
+    JOIN `estado` e ON e.`estado-id` = c.`estado-id`
+    WHERE c.`cabaña-id` = cabañaId;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarCabañas` (IN `fechaEntrada` DATE, IN `fechaSalida` DATE)   BEGIN
+    SELECT c.*, cap.`capacidad-nombre` AS capacidad, e.`estado-nombre` AS estado
+    FROM `cabañas` c
+    LEFT JOIN `reservas` r ON r.`cabaña-id` = c.`cabaña-id` 
+    JOIN `capacidad` cap ON cap.`capacidad-id` = c.`capacidad-id`
+    JOIN `estado` e ON e.`estado-id` = c.`estado-id`
+    WHERE r.`reserva-id` IS NULL
+        OR (r.`fecha-entrada` > fechaSalida OR r.`fecha-salida` < fechaEntrada);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerTodasLasCabañas` ()   BEGIN
+    SELECT c.*, e.`estado-nombre` AS nombre_estado, cap.`capacidad-nombre` AS capacidad
+    FROM `cabañas` c
+    JOIN `estado` e ON e.`estado-id` = c.`estado-id`
+    JOIN `capacidad` cap ON cap.`capacidad-id` = c.`capacidad-id`;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -152,7 +183,8 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`usuario-id`, `nombre`, `apellido`, `email`, `usuario`, `contraseña`, `tipoUsuario-id`) VALUES
 (1, 'Ana', 'Lopez', 'anita@gmail.com', 'analopez', '$2y$10$5SzHIGkJXXC4jbCguejAzOPHZvmILjGO28SkfnoLDtCY/A.Qo0Kiy', 1),
-(2, 'Juan', 'Perez', 'perez@gmail.com', 'juanperez', '$2y$10$IKo6oikXwWRHahCjsv8taeo22WrHNisLYtWliN7LLsAWh5K9QjfiC', 2);
+(2, 'Juan', 'Perez', 'perez@gmail.com', 'juanperez', '$2y$10$IKo6oikXwWRHahCjsv8taeo22WrHNisLYtWliN7LLsAWh5K9QjfiC', 2),
+(4, 'leo', 'mesi', 'mesi@gmail.com', 'mesi10', '$2y$10$0ovDVn10bBNfflRmo/anUem1ZJriwmwIOvWxW.ewme2WP8wuFXeG.', 2);
 
 --
 -- Índices para tablas volcadas
@@ -250,7 +282,7 @@ ALTER TABLE `tipo_usuario`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `usuario-id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `usuario-id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
