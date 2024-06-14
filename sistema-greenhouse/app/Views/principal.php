@@ -2,7 +2,7 @@
 <!-- imagen presentacion -->
 <section id="principio">
     <h1>Toma un descanso y disfruta de una estadía en una cabaña</h1>
-    <a href="<?= base_url()?>consultar-cabanas" class="btn btn-primary btn-block fa-lg gradient-custom-2" style="background-color: #27D99D;font-weight: bold;color:white;">RESERVA AHORA</a>
+    <a href="<?= base_url()?>explorar-cabanas" class="btn btn-primary btn-block fa-lg gradient-custom-2" style="background-color: #27D99D;font-weight: bold;color:white;">RESERVA AHORA</a>
 </section>
 
 <!-- conocenos -->

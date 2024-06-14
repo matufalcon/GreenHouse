@@ -48,7 +48,7 @@
                 </li>
                 <li class="nav-item mx-2">
                     <a class="btn btn-primary btn-block fa-lg gradient-custom-2" style="font-weight: bold;"
-                        href="<?= base_url('consultar-cabanas') ?>"><i class="bi bi-house-heart-fill"></i> Explorar
+                        href="<?= base_url('explorar-cabanas') ?>"><i class="bi bi-house-heart-fill"></i> Explorar
                         cabañas</a>
                 </li>
                 <li class="nav-item mx-2">
@@ -73,7 +73,7 @@
                 </li>
                 <li class="nav-item mx-2">
                     <a class="btn btn-primary btn-block fa-lg gradient-custom-2" style="font-weight: bold;"
-                        href="<?= base_url('consultar-cabanas') ?>"><i class="bi bi-house-heart-fill"></i> Explorar
+                        href="<?= base_url('explorar-cabanas') ?>"><i class="bi bi-house-heart-fill"></i> Explorar
                         cabañas</a>
                 </li>
                 <li class="nav-item mx-2">

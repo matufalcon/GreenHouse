@@ -8,7 +8,7 @@
                         <?= session()->getFlashdata('error') ?>
                     </div>
                 <?php endif; ?>
-                <form action='<?= base_url() ?> consultar-cabanas' method="post">
+                <form action='<?= base_url() ?> explorar-cabanas' method="post">
                     <div class="mb-3">
                         <label for="fechaEntrada" class="form-label" style="color: white;">Fecha de entrada:</label>
                         <input type="date" class="form-control" id="fechaEntrada" name="fechaEntrada"

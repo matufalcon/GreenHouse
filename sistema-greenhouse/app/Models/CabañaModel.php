@@ -19,6 +19,11 @@ class CabañaModel extends Model
         return $query->getResult();
     }
 
+    //agregue
+    public function getCabañasDisponibles()
+    {
+        return $this->where('estado', 1)->findAll();
+    }
 
     public function consultarCabañas($fechaEntrada, $fechaSalida)
     {
@@ -33,8 +38,4 @@ class CabañaModel extends Model
         $query = $db->query("CALL BuscarCabañaId(?)", [$id]);
         return $query->getRow();
     }
-
-
-
-
 }

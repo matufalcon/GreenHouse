@@ -8,10 +8,11 @@ use CodeIgniter\Router\RouteCollection;
 
 $routes->get('/', 'Home::index');
 $routes->get('/inicio', 'Home::index');
-$routes->get('/consultar-cabanas', 'Home::consultar_cabañas');
-$routes->post('/consultar-cabanas', 'Cabaña::ver_cabañas');
-
-$routes->get('detalles-cabana/(:num)', 'Cabaña::detalles/$1');
+$routes->get('/explorar-cabanas', 'Home::consultar_cabañas');
+$routes->post('/explorar-cabanas', 'Cabaña::ver_cabañas');
+$routes->get('/detalles-cabana/(:num)', 'Cabaña::detalles/$1');
+$routes->get('/realizar-reserva/(:num)', 'Reserva::create/$1');
+$routes->post('/realizar-reserva/(:num)', 'Reserva::realizarReserva/$1');
 
 /*Iniciar sesion */
 $routes->get('/login', 'Usuario::createLogin');

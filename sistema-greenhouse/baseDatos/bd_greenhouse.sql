@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-06-2024 a las 03:12:11
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 12-06-2024 a las 15:42:22
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.1.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -113,7 +113,8 @@ CREATE TABLE `estado` (
 --
 
 INSERT INTO `estado` (`estado-id`, `estado-nombre`) VALUES
-(1, 'disponible');
+(1, 'disponible'),
+(2, 'ocupado');
 
 -- --------------------------------------------------------
 
@@ -129,6 +130,20 @@ CREATE TABLE `medios_de_pagos` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `pagos`
+--
+
+CREATE TABLE `pagos` (
+  `pago-id` int(11) NOT NULL,
+  `reserva-id` int(11) NOT NULL,
+  `monto` decimal(10,2) NOT NULL,
+  `fecha-pago` date NOT NULL,
+  `mediosPago-id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `reservas`
 --
 
@@ -137,9 +152,7 @@ CREATE TABLE `reservas` (
   `fecha-entrada` date NOT NULL,
   `fecha-salida` date NOT NULL,
   `usuario-id` int(11) NOT NULL,
-  `cabaña-id` int(11) NOT NULL,
-  `mediosPago-id` int(11) NOT NULL,
-  `fecha-reserva` date NOT NULL
+  `cabaña-id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -217,11 +230,18 @@ ALTER TABLE `medios_de_pagos`
   ADD PRIMARY KEY (`mediosPago-id`);
 
 --
+-- Indices de la tabla `pagos`
+--
+ALTER TABLE `pagos`
+  ADD PRIMARY KEY (`pago-id`),
+  ADD KEY `reserva-id` (`reserva-id`,`mediosPago-id`),
+  ADD KEY `mediosPago-id` (`mediosPago-id`);
+
+--
 -- Indices de la tabla `reservas`
 --
 ALTER TABLE `reservas`
   ADD PRIMARY KEY (`reserva-id`),
-  ADD KEY `mediosPago-id` (`mediosPago-id`),
   ADD KEY `cabaña-id` (`cabaña-id`),
   ADD KEY `usuario-id` (`usuario-id`);
 
@@ -258,13 +278,19 @@ ALTER TABLE `capacidad`
 -- AUTO_INCREMENT de la tabla `estado`
 --
 ALTER TABLE `estado`
-  MODIFY `estado-id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `estado-id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `medios_de_pagos`
 --
 ALTER TABLE `medios_de_pagos`
   MODIFY `mediosPago-id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `pagos`
+--
+ALTER TABLE `pagos`
+  MODIFY `pago-id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `reservas`
@@ -296,12 +322,18 @@ ALTER TABLE `cabañas`
   ADD CONSTRAINT `cabañas_ibfk_2` FOREIGN KEY (`estado-id`) REFERENCES `estado` (`estado-id`);
 
 --
+-- Filtros para la tabla `pagos`
+--
+ALTER TABLE `pagos`
+  ADD CONSTRAINT `pagos_ibfk_1` FOREIGN KEY (`reserva-id`) REFERENCES `reservas` (`reserva-id`),
+  ADD CONSTRAINT `pagos_ibfk_2` FOREIGN KEY (`mediosPago-id`) REFERENCES `medios_de_pagos` (`mediosPago-id`);
+
+--
 -- Filtros para la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  ADD CONSTRAINT `reservas_ibfk_1` FOREIGN KEY (`mediosPago-id`) REFERENCES `medios_de_pagos` (`mediosPago-id`),
-  ADD CONSTRAINT `reservas_ibfk_2` FOREIGN KEY (`usuario-id`) REFERENCES `usuarios` (`usuario-id`),
-  ADD CONSTRAINT `reservas_ibfk_3` FOREIGN KEY (`cabaña-id`) REFERENCES `cabañas` (`cabaña-id`);
+  ADD CONSTRAINT `reservas_ibfk_1` FOREIGN KEY (`usuario-id`) REFERENCES `usuarios` (`usuario-id`),
+  ADD CONSTRAINT `reservas_ibfk_2` FOREIGN KEY (`cabaña-id`) REFERENCES `cabañas` (`cabaña-id`);
 
 --
 -- Filtros para la tabla `usuarios`

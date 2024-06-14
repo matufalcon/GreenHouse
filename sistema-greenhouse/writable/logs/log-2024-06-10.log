@@ -1,0 +1,554 @@
+INFO - 2024-06-10 00:50:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 00:50:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 00:50:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-06-10 00:50:15 --> mysqli_sql_exception: Table 'bd_greenhouse.cabaña' doesn't exist in C:\xampp\htdocs\sistema-greenhouse\system\Database\MySQLi\Connection.php:308
+Stack trace:
+#0 C:\xampp\htdocs\sistema-greenhouse\system\Database\MySQLi\Connection.php(308): mysqli->query('SELECT `caba\xC3\xB1a...', 0)
+#1 C:\xampp\htdocs\sistema-greenhouse\system\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `caba\xC3\xB1a...')
+#2 C:\xampp\htdocs\sistema-greenhouse\system\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `caba\xC3\xB1a...')
+#3 C:\xampp\htdocs\sistema-greenhouse\system\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `caba\xC3\xB1a...', Array, false)
+#4 C:\xampp\htdocs\sistema-greenhouse\system\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\sistema-greenhouse\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\sistema-greenhouse\app\Models\CabañaModel.php(32): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\sistema-greenhouse\app\Controllers\Cabaña.php(23): App\Models\CabañaModel->consultarCabañas('2024-06-11', '2024-06-20')
+#8 C:\xampp\htdocs\sistema-greenhouse\system\CodeIgniter.php(933): App\Controllers\Cabaña->ver_cabañas()
+#9 C:\xampp\htdocs\sistema-greenhouse\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+#10 C:\xampp\htdocs\sistema-greenhouse\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\sistema-greenhouse\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\sistema-greenhouse\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\sistema-greenhouse\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2024-06-10 00:50:15 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'bd_greenhouse.cabaña' doesn't exist
+[Method: POST, Route: consultar-cabanas]
+in SYSTEMPATH\Database\BaseConnection.php on line 676.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `cabaña`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > :reserva.`fecha-entrada`:
+OR `reserva`.`fecha-salida` < :reserva.`fecha-salida`:', [...], false)
+ 2 SYSTEMPATH\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\CabañaModel.php(32): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Cabaña.php(23): App\Models\CabañaModel->consultarCabañas('2024-06-11', '2024-06-20')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Cabaña->ver_cabañas()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-10 00:50:15 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'bd_greenhouse.cabaña' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 313.
+ 1 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cabaña`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > \'2024-06-20\'
+OR `reserva`.`fecha-salida` < \'2024-06-11\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cabaña`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > \'2024-06-20\'
+OR `reserva`.`fecha-salida` < \'2024-06-11\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `cabaña`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > :reserva.`fecha-entrada`:
+OR `reserva`.`fecha-salida` < :reserva.`fecha-salida`:', [...], false)
+ 4 SYSTEMPATH\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\CabañaModel.php(32): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Cabaña.php(23): App\Models\CabañaModel->consultarCabañas('2024-06-11', '2024-06-20')
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Cabaña->ver_cabañas()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-10 00:50:15 --> [Caused by] mysqli_sql_exception: Table 'bd_greenhouse.cabaña' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 308.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(308): mysqli->query('SELECT `cabaña`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > \'2024-06-20\'
+OR `reserva`.`fecha-salida` < \'2024-06-11\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cabaña`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > \'2024-06-20\'
+OR `reserva`.`fecha-salida` < \'2024-06-11\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cabaña`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > \'2024-06-20\'
+OR `reserva`.`fecha-salida` < \'2024-06-11\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `cabaña`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > :reserva.`fecha-entrada`:
+OR `reserva`.`fecha-salida` < :reserva.`fecha-salida`:', [...], false)
+ 5 SYSTEMPATH\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\CabañaModel.php(32): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Cabaña.php(23): App\Models\CabañaModel->consultarCabañas('2024-06-11', '2024-06-20')
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Cabaña->ver_cabañas()
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-06-10 00:50:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-06-10 00:50:51 --> mysqli_sql_exception: Table 'bd_greenhouse.cabaña' doesn't exist in C:\xampp\htdocs\sistema-greenhouse\system\Database\MySQLi\Connection.php:308
+Stack trace:
+#0 C:\xampp\htdocs\sistema-greenhouse\system\Database\MySQLi\Connection.php(308): mysqli->query('SELECT `caba\xC3\xB1a...', 0)
+#1 C:\xampp\htdocs\sistema-greenhouse\system\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `caba\xC3\xB1a...')
+#2 C:\xampp\htdocs\sistema-greenhouse\system\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `caba\xC3\xB1a...')
+#3 C:\xampp\htdocs\sistema-greenhouse\system\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `caba\xC3\xB1a...', Array, false)
+#4 C:\xampp\htdocs\sistema-greenhouse\system\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\sistema-greenhouse\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\sistema-greenhouse\app\Models\CabañaModel.php(32): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\sistema-greenhouse\app\Controllers\Cabaña.php(23): App\Models\CabañaModel->consultarCabañas('2024-06-11', '2024-06-20')
+#8 C:\xampp\htdocs\sistema-greenhouse\system\CodeIgniter.php(933): App\Controllers\Cabaña->ver_cabañas()
+#9 C:\xampp\htdocs\sistema-greenhouse\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+#10 C:\xampp\htdocs\sistema-greenhouse\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\sistema-greenhouse\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\sistema-greenhouse\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\sistema-greenhouse\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2024-06-10 00:50:51 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'bd_greenhouse.cabaña' doesn't exist
+[Method: POST, Route: consultar-cabanas]
+in SYSTEMPATH\Database\BaseConnection.php on line 676.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `cabaña`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > :reserva.`fecha-entrada`:
+OR `reserva`.`fecha-salida` < :reserva.`fecha-salida`:', [...], false)
+ 2 SYSTEMPATH\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\CabañaModel.php(32): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Cabaña.php(23): App\Models\CabañaModel->consultarCabañas('2024-06-11', '2024-06-20')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Cabaña->ver_cabañas()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-10 00:50:51 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'bd_greenhouse.cabaña' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 313.
+ 1 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cabaña`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > \'2024-06-20\'
+OR `reserva`.`fecha-salida` < \'2024-06-11\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cabaña`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > \'2024-06-20\'
+OR `reserva`.`fecha-salida` < \'2024-06-11\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `cabaña`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > :reserva.`fecha-entrada`:
+OR `reserva`.`fecha-salida` < :reserva.`fecha-salida`:', [...], false)
+ 4 SYSTEMPATH\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\CabañaModel.php(32): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Cabaña.php(23): App\Models\CabañaModel->consultarCabañas('2024-06-11', '2024-06-20')
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Cabaña->ver_cabañas()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-10 00:50:51 --> [Caused by] mysqli_sql_exception: Table 'bd_greenhouse.cabaña' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 308.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(308): mysqli->query('SELECT `cabaña`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > \'2024-06-20\'
+OR `reserva`.`fecha-salida` < \'2024-06-11\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cabaña`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > \'2024-06-20\'
+OR `reserva`.`fecha-salida` < \'2024-06-11\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cabaña`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > \'2024-06-20\'
+OR `reserva`.`fecha-salida` < \'2024-06-11\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `cabaña`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > :reserva.`fecha-entrada`:
+OR `reserva`.`fecha-salida` < :reserva.`fecha-salida`:', [...], false)
+ 5 SYSTEMPATH\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\CabañaModel.php(32): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Cabaña.php(23): App\Models\CabañaModel->consultarCabañas('2024-06-11', '2024-06-20')
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Cabaña->ver_cabañas()
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-06-10 00:51:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-06-10 00:51:37 --> mysqli_sql_exception: Table 'bd_greenhouse.cabaña' doesn't exist in C:\xampp\htdocs\sistema-greenhouse\system\Database\MySQLi\Connection.php:308
+Stack trace:
+#0 C:\xampp\htdocs\sistema-greenhouse\system\Database\MySQLi\Connection.php(308): mysqli->query('SELECT `caba\xC3\xB1a...', 0)
+#1 C:\xampp\htdocs\sistema-greenhouse\system\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `caba\xC3\xB1a...')
+#2 C:\xampp\htdocs\sistema-greenhouse\system\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `caba\xC3\xB1a...')
+#3 C:\xampp\htdocs\sistema-greenhouse\system\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `caba\xC3\xB1a...', Array, false)
+#4 C:\xampp\htdocs\sistema-greenhouse\system\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\sistema-greenhouse\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\sistema-greenhouse\app\Models\CabañaModel.php(32): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\sistema-greenhouse\app\Controllers\Cabaña.php(23): App\Models\CabañaModel->consultarCabañas('2024-06-11', '2024-06-20')
+#8 C:\xampp\htdocs\sistema-greenhouse\system\CodeIgniter.php(933): App\Controllers\Cabaña->ver_cabañas()
+#9 C:\xampp\htdocs\sistema-greenhouse\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+#10 C:\xampp\htdocs\sistema-greenhouse\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\sistema-greenhouse\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\sistema-greenhouse\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\sistema-greenhouse\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2024-06-10 00:51:37 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'bd_greenhouse.cabaña' doesn't exist
+[Method: POST, Route: consultar-cabanas]
+in SYSTEMPATH\Database\BaseConnection.php on line 676.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `cabañas`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > :reserva.`fecha-entrada`:
+OR `reserva`.`fecha-salida` < :reserva.`fecha-salida`:', [...], false)
+ 2 SYSTEMPATH\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\CabañaModel.php(32): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Cabaña.php(23): App\Models\CabañaModel->consultarCabañas('2024-06-11', '2024-06-20')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Cabaña->ver_cabañas()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-10 00:51:37 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'bd_greenhouse.cabaña' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 313.
+ 1 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cabañas`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > \'2024-06-20\'
+OR `reserva`.`fecha-salida` < \'2024-06-11\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cabañas`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > \'2024-06-20\'
+OR `reserva`.`fecha-salida` < \'2024-06-11\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `cabañas`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > :reserva.`fecha-entrada`:
+OR `reserva`.`fecha-salida` < :reserva.`fecha-salida`:', [...], false)
+ 4 SYSTEMPATH\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\CabañaModel.php(32): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Cabaña.php(23): App\Models\CabañaModel->consultarCabañas('2024-06-11', '2024-06-20')
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Cabaña->ver_cabañas()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-10 00:51:37 --> [Caused by] mysqli_sql_exception: Table 'bd_greenhouse.cabaña' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 308.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(308): mysqli->query('SELECT `cabañas`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > \'2024-06-20\'
+OR `reserva`.`fecha-salida` < \'2024-06-11\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cabañas`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > \'2024-06-20\'
+OR `reserva`.`fecha-salida` < \'2024-06-11\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cabañas`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > \'2024-06-20\'
+OR `reserva`.`fecha-salida` < \'2024-06-11\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `cabañas`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabaña`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > :reserva.`fecha-entrada`:
+OR `reserva`.`fecha-salida` < :reserva.`fecha-salida`:', [...], false)
+ 5 SYSTEMPATH\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\CabañaModel.php(32): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Cabaña.php(23): App\Models\CabañaModel->consultarCabañas('2024-06-11', '2024-06-20')
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Cabaña->ver_cabañas()
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-06-10 00:52:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-06-10 00:52:19 --> mysqli_sql_exception: Table 'bd_greenhouse.reserva' doesn't exist in C:\xampp\htdocs\sistema-greenhouse\system\Database\MySQLi\Connection.php:308
+Stack trace:
+#0 C:\xampp\htdocs\sistema-greenhouse\system\Database\MySQLi\Connection.php(308): mysqli->query('SELECT `caba\xC3\xB1a...', 0)
+#1 C:\xampp\htdocs\sistema-greenhouse\system\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `caba\xC3\xB1a...')
+#2 C:\xampp\htdocs\sistema-greenhouse\system\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `caba\xC3\xB1a...')
+#3 C:\xampp\htdocs\sistema-greenhouse\system\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `caba\xC3\xB1a...', Array, false)
+#4 C:\xampp\htdocs\sistema-greenhouse\system\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\sistema-greenhouse\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\sistema-greenhouse\app\Models\CabañaModel.php(32): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\sistema-greenhouse\app\Controllers\Cabaña.php(23): App\Models\CabañaModel->consultarCabañas('2024-06-11', '2024-06-20')
+#8 C:\xampp\htdocs\sistema-greenhouse\system\CodeIgniter.php(933): App\Controllers\Cabaña->ver_cabañas()
+#9 C:\xampp\htdocs\sistema-greenhouse\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+#10 C:\xampp\htdocs\sistema-greenhouse\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\sistema-greenhouse\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\sistema-greenhouse\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\sistema-greenhouse\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2024-06-10 00:52:19 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'bd_greenhouse.reserva' doesn't exist
+[Method: POST, Route: consultar-cabanas]
+in SYSTEMPATH\Database\BaseConnection.php on line 676.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `cabañas`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabañas`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > :reserva.`fecha-entrada`:
+OR `reserva`.`fecha-salida` < :reserva.`fecha-salida`:', [...], false)
+ 2 SYSTEMPATH\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\CabañaModel.php(32): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Cabaña.php(23): App\Models\CabañaModel->consultarCabañas('2024-06-11', '2024-06-20')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Cabaña->ver_cabañas()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-10 00:52:19 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'bd_greenhouse.reserva' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 313.
+ 1 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cabañas`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabañas`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > \'2024-06-20\'
+OR `reserva`.`fecha-salida` < \'2024-06-11\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cabañas`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabañas`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > \'2024-06-20\'
+OR `reserva`.`fecha-salida` < \'2024-06-11\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `cabañas`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabañas`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > :reserva.`fecha-entrada`:
+OR `reserva`.`fecha-salida` < :reserva.`fecha-salida`:', [...], false)
+ 4 SYSTEMPATH\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\CabañaModel.php(32): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Cabaña.php(23): App\Models\CabañaModel->consultarCabañas('2024-06-11', '2024-06-20')
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Cabaña->ver_cabañas()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-10 00:52:19 --> [Caused by] mysqli_sql_exception: Table 'bd_greenhouse.reserva' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 308.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(308): mysqli->query('SELECT `cabañas`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabañas`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > \'2024-06-20\'
+OR `reserva`.`fecha-salida` < \'2024-06-11\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cabañas`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabañas`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > \'2024-06-20\'
+OR `reserva`.`fecha-salida` < \'2024-06-11\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cabañas`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabañas`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > \'2024-06-20\'
+OR `reserva`.`fecha-salida` < \'2024-06-11\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `cabañas`.*, `capacidad`.`capacidad-nombre` AS `capacidad`, `estado`.`estado-nombre` AS `estado`
+FROM `cabañas`
+LEFT JOIN `reserva` ON reserva.`cabaña-id` = cabaña.`cabaña-id`
+JOIN `capacidad` ON capacidad.`capacidad-id` = cabaña.`capacidad-id`
+JOIN `estado` ON estado.`estado-id` = cabaña.`estado-id`
+WHERE `reserva`.`reserva-id` IS NULL
+OR `reserva`.`fecha-entrada` > :reserva.`fecha-entrada`:
+OR `reserva`.`fecha-salida` < :reserva.`fecha-salida`:', [...], false)
+ 5 SYSTEMPATH\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\CabañaModel.php(32): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Cabaña.php(23): App\Models\CabañaModel->consultarCabañas('2024-06-11', '2024-06-20')
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Cabaña->ver_cabañas()
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-06-10 00:57:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 01:00:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 01:00:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 01:00:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-06-10 01:00:20 --> mysqli_sql_exception: PROCEDURE bd_greenhouse.ConsultarCabañas does not exist in C:\xampp\htdocs\sistema-greenhouse\system\Database\MySQLi\Connection.php:308
+Stack trace:
+#0 C:\xampp\htdocs\sistema-greenhouse\system\Database\MySQLi\Connection.php(308): mysqli->query('CALL ConsultarC...', 0)
+#1 C:\xampp\htdocs\sistema-greenhouse\system\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('CALL ConsultarC...')
+#2 C:\xampp\htdocs\sistema-greenhouse\system\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('CALL ConsultarC...')
+#3 C:\xampp\htdocs\sistema-greenhouse\app\Models\CabañaModel.php(26): CodeIgniter\Database\BaseConnection->query('CALL ConsultarC...', Array)
+#4 C:\xampp\htdocs\sistema-greenhouse\app\Controllers\Cabaña.php(16): App\Models\CabañaModel->consultarCabañas('2024-06-12', '2024-06-29')
+#5 C:\xampp\htdocs\sistema-greenhouse\system\CodeIgniter.php(933): App\Controllers\Cabaña->ver_cabañas()
+#6 C:\xampp\htdocs\sistema-greenhouse\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+#7 C:\xampp\htdocs\sistema-greenhouse\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\sistema-greenhouse\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\sistema-greenhouse\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\sistema-greenhouse\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2024-06-10 01:00:20 --> CodeIgniter\Database\Exceptions\DatabaseException: PROCEDURE bd_greenhouse.ConsultarCabañas does not exist
+[Method: POST, Route: consultar-cabanas]
+in SYSTEMPATH\Database\BaseConnection.php on line 676.
+ 1 APPPATH\Models\CabañaModel.php(26): CodeIgniter\Database\BaseConnection->query('CALL ConsultarCabañas(?, ?)', [...])
+ 2 APPPATH\Controllers\Cabaña.php(16): App\Models\CabañaModel->consultarCabañas('2024-06-12', '2024-06-29')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Cabaña->ver_cabañas()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-10 01:00:20 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: PROCEDURE bd_greenhouse.ConsultarCabañas does not exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 313.
+ 1 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('CALL ConsultarCabañas(\'2024-06-12\', \'2024-06-29\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('CALL ConsultarCabañas(\'2024-06-12\', \'2024-06-29\')')
+ 3 APPPATH\Models\CabañaModel.php(26): CodeIgniter\Database\BaseConnection->query('CALL ConsultarCabañas(?, ?)', [...])
+ 4 APPPATH\Controllers\Cabaña.php(16): App\Models\CabañaModel->consultarCabañas('2024-06-12', '2024-06-29')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Cabaña->ver_cabañas()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-10 01:00:20 --> [Caused by] mysqli_sql_exception: PROCEDURE bd_greenhouse.ConsultarCabañas does not exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 308.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(308): mysqli->query('CALL ConsultarCabañas(\'2024-06-12\', \'2024-06-29\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('CALL ConsultarCabañas(\'2024-06-12\', \'2024-06-29\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('CALL ConsultarCabañas(\'2024-06-12\', \'2024-06-29\')')
+ 4 APPPATH\Models\CabañaModel.php(26): CodeIgniter\Database\BaseConnection->query('CALL ConsultarCabañas(?, ?)', [...])
+ 5 APPPATH\Controllers\Cabaña.php(16): App\Models\CabañaModel->consultarCabañas('2024-06-12', '2024-06-29')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Cabaña->ver_cabañas()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cabaña))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-06-10 01:17:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 01:18:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 01:18:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 01:19:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 01:20:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 01:22:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 01:22:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 01:22:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 01:23:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 01:24:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 01:24:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 01:24:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 01:24:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 01:24:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 01:25:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 01:26:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 01:26:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 01:26:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 01:26:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 01:45:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 01:45:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 02:02:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

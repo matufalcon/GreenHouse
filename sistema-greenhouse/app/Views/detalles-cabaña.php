@@ -10,7 +10,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <h2 class="text-secondary"><?= $cabaña->{'nombre'} ?></h2>
+                    <h2 class="text-secondary text-center"><?= $cabaña->{'nombre'} ?></h2>
                     <p>Capacidad: <?= $cabaña->{"capacidad"} ?></p>
                     <p>🛖Cocina totalmente equipada</p>
                     <p>🛖Baño con bañera</p>
@@ -21,9 +21,9 @@
                     <p>🛖Estacionamiento al lado de la cabaña</p>
                 </div>
                 <?php if (session()->get('logged_in')): ?>
-                    <a href="#" class="btn btn-primary" style="background-color: #27D99D;">Reserva ahora</a>
+                    <a href="<?= base_url('realizar-reserva/'. $cabaña->{'cabaña-id'} )?>" class="btn btn-primary">Reserva ahora</a>
                 <?php else: ?>
-                    <a href="<?= base_url()?>login" class="btn btn-primary" style="background-color: #27D99D;">Reserva ahora</a>
+                    <a href="<?= base_url('login')?>" class="btn btn-primary">Reserva ahora</a>
                 <?php endif; ?>
 
             </div>
