@@ -7,10 +7,15 @@ class Cabaña extends BaseController
 {
     public function ver_cabañas()
     {
+        $session = session();
         $cabañaModel = new CabañaModel();
         $fechaActual = date("Y-m-d");
         $fechaEntrada = $this->request->getPost('fechaEntrada');
         $fechaSalida = $this->request->getPost('fechaSalida');
+
+        //solucionado ponele
+        $session->set('fechaDesde', $fechaEntrada);
+        $session->set('fechaHasta', $fechaSalida);
 
         if($fechaEntrada <= $fechaSalida && $fechaEntrada > $fechaActual){
             $data['cabañas'] = $cabañaModel->consultarCabañas($fechaEntrada, $fechaSalida);
@@ -20,7 +25,7 @@ class Cabaña extends BaseController
             echo view('footer');
         } else {
             session()->setFlashdata('error', 'Debe introducir una fecha valida.');
-            return $this->response->redirect(base_url().'consultar-cabanas');
+            return $this->response->redirect(base_url().'explorar-cabanas');
         }
     }   
         
