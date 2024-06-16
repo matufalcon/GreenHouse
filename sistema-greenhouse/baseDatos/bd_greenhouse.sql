@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-06-2024 a las 15:42:22
+-- Tiempo de generación: 16-06-2024 a las 00:27:57
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.1.25
 
@@ -74,7 +74,7 @@ CREATE TABLE `cabañas` (
 
 INSERT INTO `cabañas` (`cabaña-id`, `nombre`, `descripcion`, `imagen`, `precio`, `estado-id`, `capacidad-id`) VALUES
 (1, 'Mburucuyá Poty', 'Este alojamiento único ofrece un amplio espacio para disfrutar con tus seres queridos. Es un quincho independiente con dos dormitorios y un dormitorio principal con ventilador de techo, con capacidad para diez personas. Además, una amplia parrilla para asados, un comedor con ventilador de techo, un fogón y horno de hierro a leña, y un garaje interno para cuatro autos.\r\n\r\n\r\n\r\n\r\n\r\n', 'cabaña1.jpeg', 2000.00, 1, 1),
-(2, 'Rincón de Montaña', 'Una acogedora cabaña de tres ambientes con capacidad para cinco personas. Incluye un amplio dormitorio con cama matrimonial, otro dormitorio con camas individuales o matrimonial, y un luminoso living comedor con cómodos sillones y una acogedora estufa a leña. Perfecta para disfrutar de la naturaleza en familia o con amigos.', 'cabaña1.0.jpg', 309111.00, 1, 2),
+(2, 'Rincón de Montaña', 'Una acogedora cabaña de tres ambientes con capacidad para cinco personas. Incluye un amplio dormitorio con cama matrimonial, otro dormitorio con camas individuales o matrimonial, y un luminoso living comedor con cómodos sillones y una acogedora estufa a leña. Perfecta para disfrutar de la naturaleza en familia o con amigos.', 'cabaña1.0.jpg', 309111.00, 2, 2),
 (3, 'Refugio Sereno', 'Una encantadora cabaña de dos ambientes, ideal para una escapada romántica o un retiro tranquilo. Incluye una acogedora sala de estar con cocina integrada, un baño completo y un dormitorio con una cómoda cama matrimonial. Decorada con un estilo rústico y cálido, ofrece un ambiente acogedor para relajarse y disfrutar de la naturaleza circundante.', 'cabaña4.jpg', 309111.00, 1, 3);
 
 -- --------------------------------------------------------
@@ -113,8 +113,9 @@ CREATE TABLE `estado` (
 --
 
 INSERT INTO `estado` (`estado-id`, `estado-nombre`) VALUES
-(1, 'disponible'),
-(2, 'ocupado');
+(1, 'limpieza'),
+(2, 'reparacion'),
+(3, 'inactiva');
 
 -- --------------------------------------------------------
 
@@ -124,22 +125,8 @@ INSERT INTO `estado` (`estado-id`, `estado-nombre`) VALUES
 
 CREATE TABLE `medios_de_pagos` (
   `mediosPago-id` int(11) NOT NULL,
-  `MediosPago-nombre` varchar(200) NOT NULL
+  `mediosPago-nombre` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `pagos`
---
-
-CREATE TABLE `pagos` (
-  `pago-id` int(11) NOT NULL,
-  `reserva-id` int(11) NOT NULL,
-  `monto` decimal(10,2) NOT NULL,
-  `fecha-pago` date NOT NULL,
-  `mediosPago-id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -151,8 +138,12 @@ CREATE TABLE `reservas` (
   `reserva-id` int(11) NOT NULL,
   `fecha-entrada` date NOT NULL,
   `fecha-salida` date NOT NULL,
+  `cantHuesped` int(11) NOT NULL,
+  `monto` decimal(10,2) NOT NULL,
+  `fecha-pago` date NOT NULL,
   `usuario-id` int(11) NOT NULL,
-  `cabaña-id` int(11) NOT NULL
+  `cabaña-id` int(11) NOT NULL,
+  `mediosPago-id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -230,20 +221,13 @@ ALTER TABLE `medios_de_pagos`
   ADD PRIMARY KEY (`mediosPago-id`);
 
 --
--- Indices de la tabla `pagos`
---
-ALTER TABLE `pagos`
-  ADD PRIMARY KEY (`pago-id`),
-  ADD KEY `reserva-id` (`reserva-id`,`mediosPago-id`),
-  ADD KEY `mediosPago-id` (`mediosPago-id`);
-
---
 -- Indices de la tabla `reservas`
 --
 ALTER TABLE `reservas`
   ADD PRIMARY KEY (`reserva-id`),
   ADD KEY `cabaña-id` (`cabaña-id`),
-  ADD KEY `usuario-id` (`usuario-id`);
+  ADD KEY `usuario-id` (`usuario-id`),
+  ADD KEY `mediosPago-id` (`mediosPago-id`);
 
 --
 -- Indices de la tabla `tipo_usuario`
@@ -287,12 +271,6 @@ ALTER TABLE `medios_de_pagos`
   MODIFY `mediosPago-id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `pagos`
---
-ALTER TABLE `pagos`
-  MODIFY `pago-id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
@@ -322,18 +300,12 @@ ALTER TABLE `cabañas`
   ADD CONSTRAINT `cabañas_ibfk_2` FOREIGN KEY (`estado-id`) REFERENCES `estado` (`estado-id`);
 
 --
--- Filtros para la tabla `pagos`
---
-ALTER TABLE `pagos`
-  ADD CONSTRAINT `pagos_ibfk_1` FOREIGN KEY (`reserva-id`) REFERENCES `reservas` (`reserva-id`),
-  ADD CONSTRAINT `pagos_ibfk_2` FOREIGN KEY (`mediosPago-id`) REFERENCES `medios_de_pagos` (`mediosPago-id`);
-
---
 -- Filtros para la tabla `reservas`
 --
 ALTER TABLE `reservas`
   ADD CONSTRAINT `reservas_ibfk_1` FOREIGN KEY (`usuario-id`) REFERENCES `usuarios` (`usuario-id`),
-  ADD CONSTRAINT `reservas_ibfk_2` FOREIGN KEY (`cabaña-id`) REFERENCES `cabañas` (`cabaña-id`);
+  ADD CONSTRAINT `reservas_ibfk_2` FOREIGN KEY (`cabaña-id`) REFERENCES `cabañas` (`cabaña-id`),
+  ADD CONSTRAINT `reservas_ibfk_3` FOREIGN KEY (`mediosPago-id`) REFERENCES `medios_de_pagos` (`mediosPago-id`);
 
 --
 -- Filtros para la tabla `usuarios`

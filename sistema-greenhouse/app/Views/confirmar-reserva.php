@@ -3,12 +3,10 @@
         <table class="table table-bordered">
             <thead class="table-dark">
                 <tr>
-                    <th>Tipo de Habitación</th>
+                    <th>Nombre de la cabaña</th>
                     <th>Descripción</th>
                     <th>Cantidad de huéspedes</th>
-                    <th>Precio por Noche</th>
-                    <th>Día de llegada</th>
-                    <th>Día de salida</th>
+                    <th>Precio noche</th>
                     <th>Cantidad de días</th>
                     <th>Precio total</th>
                 </tr>
@@ -23,12 +21,21 @@
                         <?php endfor; ?>
                     </td>
                     <td><?= number_format($cabaña->precio, 2, ',', '.') ?></td>
-                    <td><?= date('d-m', strtotime($fechaDesde)) ?></td>
-                    <td><?= date('d-m', strtotime($fechaHasta)) ?></td>
                     <td><?= $diferenciaDias ?></td>
-                    <td><?= number_format($precioTotal, 2, ',', '.') ?></td>
-                </tr>
-            </tbody>
-        </table>
+                    <td><?= number_format($precioTotal, 2, ',', '.') ?> <br><br>
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-end">
+        <form action='<?= base_url('/inicio') ?>' class="me-2">
+            <button type="submit" class="btn btn-danger">Cancelar</button>
+        </form>
+        <form action='<?= base_url() ?>' method="post">
+            <button type="submit" class="btn btn-primary">Confirmar reserva</button>
+        </form>
+    </div>
+
     </div>
 </div>

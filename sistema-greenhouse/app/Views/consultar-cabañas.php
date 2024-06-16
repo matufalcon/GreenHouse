@@ -34,14 +34,11 @@
                     <div class="col-md-4">
                         <div class="card mb-4">
                             <img src="assets/img/<?= $cabaña->imagen ?>" class="card-img-top" alt="Cabaña">
-
                             <div class="card-body">
-
                                 <h5 class="card-title text-center"><?= $cabaña->nombre ?></h5>
-
-                                <p class="card-text text-justify">Características de la cabaña: <?= $cabaña->descripcion ?>
+                                <p class="card-text text-justify">
+                                    Características de la cabaña: <?= $cabaña->descripcion ?>
                                 </p>
-
                                 <a href="<?= base_url('detalles-cabana/' . $cabaña->{'cabaña-id'}) ?>"
                                     class="btn btn-primary text-center">Ver detalles
                                 </a>

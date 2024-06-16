@@ -14,6 +14,7 @@ class Reserva extends Controller
 
     public function create($id)
     {
+        $session = session();
         $cabañaModel = new CabañaModel();
         $cabaña = $cabañaModel->buscarCabañaId($id);
 
@@ -21,7 +22,18 @@ class Reserva extends Controller
             return redirect()->to(base_url('cabañas-disponibles'))->with('error', 'Cabaña no encontrada');
         }
 
-        $data['cabaña'] = $cabaña;
+        $fechaDesde = $session->get('fechaDesde');
+        $fechaHasta = $session->get('fechaHasta');
+        $diferenciaDias = $this->calcularDiferenciaDias($fechaDesde, $fechaHasta);
+        $precioTotal = $diferenciaDias * $cabaña->precio;
+
+        $data = [
+            'cabaña' => $cabaña,
+            'fechaDesde' => $fechaDesde,
+            'fechaHasta' => $fechaHasta,
+            'diferenciaDias' => $diferenciaDias,
+            'precioTotal' => $precioTotal
+        ];
 
         echo view('header');
         echo view('navbar');
