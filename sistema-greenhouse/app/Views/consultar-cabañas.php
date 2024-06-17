@@ -12,12 +12,12 @@
                     <div class="mb-3">
                         <label for="fechaEntrada" class="form-label" style="color: white;">Fecha de entrada:</label>
                         <input type="date" class="form-control" id="fechaEntrada" name="fechaEntrada"
-                            min="<?= date('Y-m-d') ?>" required>
+                            min="<?= date('Y-m-d') ?>" value="<?php echo set_value("fechaEntrada")?>" required>
                     </div>
                     <div class="mb-3">
                         <label for="fechaSalida" class="form-label" style="color: white;">Fecha de salida:</label>
                         <input type="date" class="form-control" id="fechaSalida" name="fechaSalida"
-                            min="<?= date('Y-m-d') ?>" required>
+                            min="<?= date('Y-m-d') ?>" value="<?php echo set_value("fechaSalida")?>" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Ver cabañas disponibles</button>
                 </form>

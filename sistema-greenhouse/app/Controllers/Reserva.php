@@ -12,11 +12,11 @@ class Reserva extends Controller
         helper(['form']);
     }
 
-    public function create($id)
+    public function create($idCabaña)
     {
         $session = session();
         $cabañaModel = new CabañaModel();
-        $cabaña = $cabañaModel->buscarCabañaId($id);
+        $cabaña = $cabañaModel->buscarCabañaId($idCabaña);
 
         if ($cabaña === null) {
             return redirect()->to(base_url('cabañas-disponibles'))->with('error', 'Cabaña no encontrada');
@@ -41,11 +41,11 @@ class Reserva extends Controller
         echo view('footer');
     }
 
-    public function realizarReserva($id)
+    public function realizarReserva($idCabaña)
     {
         $session = session();
         $cabañaModel = new CabañaModel();
-        $cabaña = $cabañaModel->buscarCabañaId($id);
+        $cabaña = $cabañaModel->buscarCabañaId($idCabaña);
 
         if ($cabaña === null) {
             return redirect()->to(base_url('cabañas-disponibles'))->with('error', 'Cabaña no encontrada');
@@ -73,6 +73,28 @@ class Reserva extends Controller
         echo view('realizar-reserva', $data);
         echo view('confirmar-reserva', $data); 
         echo view('footer');
+    }
+
+    public function registrarReserva()
+    {
+        $reservasModel = new ReservasModel();
+
+        $data = [
+            'fecha-entrada' => $this->request->getPost('fecha-entrada'),
+            'fecha-salida' => $this->request->getPost('fecha-salida'),
+            'cantHuesped' => $this->request->getPost('cantHuesped'),
+            'monto' => $this->request->getPost('monto'),
+            'fecha-pago' => date('Y-m-d'),
+            'usuario-id' => $this->request->getPost('usuario-id'),
+            'cabaña-id' => $this->request->getPost('cabaña-id'),
+            'mediosPago-id' => $this->request->getPost('mediosPago-id')
+        ];
+
+        if ($reservasModel->save($data)) {
+            return redirect()->to(base_url())->with('success', 'Reserva realizada con exito');
+        } else {
+            return redirect()->back()->with('error', 'Error al registrar la reserva');
+        }
     }
 
     private function calcularDiferenciaDias($fechaDesde, $fechaHasta)

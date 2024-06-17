@@ -5,6 +5,10 @@ use App\Models\CabañaModel;
 
 class Cabaña extends BaseController
 {
+    public function __construct()
+    {
+        helper(['form']);
+    }
     public function ver_cabañas()
     {
         $session = session();

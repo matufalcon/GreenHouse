@@ -23,19 +23,24 @@
                     <td><?= number_format($cabaña->precio, 2, ',', '.') ?></td>
                     <td><?= $diferenciaDias ?></td>
                     <td><?= number_format($precioTotal, 2, ',', '.') ?> <br><br>
-                    
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="d-flex justify-content-end">
-        <form action='<?= base_url('/inicio') ?>' class="me-2">
-            <button type="submit" class="btn btn-danger">Cancelar</button>
-        </form>
-        <form action='<?= base_url() ?>' method="post">
-            <button type="submit" class="btn btn-primary">Confirmar reserva</button>
-        </form>
-    </div>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-end">
+            <a type="submit" class="btn btn-danger me-4" href="<?= base_url()?>">Cancelar</a>
+            <form action='<?= base_url() ?>registrarReserva' method="post">
+                <input type="hidden" name="fecha-entrada" value="<?= $fechaDesde ?>">
+                <input type="hidden" name="fecha-salida" value="<?= $fechaHasta ?>">
+                <input type="hidden" name="cantHuesped" value="<?= $cantidadHuespedes ?>">
+                <input type="hidden" name="monto" value="<?= $precioTotal ?>">
+                <input type="hidden" name="usuario-id" value="<?= session()->get('id') ?>">
+                <input type="hidden" name="cabaña-id" value="<?= $cabaña->{'cabaña-id'} ?>">
+                <input type="hidden" name="mediosPago-id" value="<?= $medioPago ?>">
+                <button type="submit" class="btn btn-primary">Confirmar reserva</button>
+            </form>
+        </div>
 
     </div>
 </div>

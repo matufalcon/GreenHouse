@@ -93,8 +93,11 @@ class Usuario extends Controller
                 'tipoUsuario-id' => 2 
             ];
     
-            $model->save($newData);
-            return redirect()->to(base_url().'login');
+            if ($model->save($newData)) {
+                return redirect()->to(base_url().'login')->with('success', 'Usuario registrado exitosamente');
+            } else {
+                return redirect()->back()->with('error', 'Error al registrar el usuario');
+            }
         } else {
             // Mostrar mensajes de validación en caso de errores
             $data['validation'] = $this->validator;

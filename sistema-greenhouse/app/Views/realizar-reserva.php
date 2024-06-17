@@ -22,10 +22,10 @@
                                 </h5><br>
                                 <label for="medioPago" class="form-label">Medio de pago:</label>
                                 <select class="form-select" id="medioPago" name="medioPago" required>
-                                    <option>Seleccione el medio de pago</option>
-                                    <option value="1">Transferencia</option>
-                                    <option value="2">Tarjeta de Débito</option>
-                                    <option value="3">Tarjeta de Crédito</option>
+                                    <option value="" hidden> Seleccione el medio de pago</option>
+                                    <option value="1" <?php echo set_select('medioPago', '1'); ?> >Transferencia</option>
+                                    <option value="2" <?php echo set_select('medioPago', '2'); ?> >Tarjeta de Débito</option>
+                                    <option value="3" <?php echo set_select('medioPago', '3'); ?> >Tarjeta de Crédito</option>
                                 </select>
                             </div>
                         </div>
