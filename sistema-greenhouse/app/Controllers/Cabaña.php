@@ -9,6 +9,7 @@ class Cabaña extends BaseController
     {
         helper(['form']);
     }
+
     public function ver_cabañas()
     {
         $session = session();
@@ -17,11 +18,10 @@ class Cabaña extends BaseController
         $fechaEntrada = $this->request->getPost('fechaEntrada');
         $fechaSalida = $this->request->getPost('fechaSalida');
 
-        //solucionado ponele
         $session->set('fechaDesde', $fechaEntrada);
         $session->set('fechaHasta', $fechaSalida);
 
-        if($fechaEntrada <= $fechaSalida && $fechaEntrada > $fechaActual){
+        if($fechaEntrada <= $fechaSalida && $fechaEntrada >= $fechaActual && $fechaEntrada != $fechaSalida){
             $data['cabañas'] = $cabañaModel->consultarCabañas($fechaEntrada, $fechaSalida);
             echo view('header');
             echo view('navbar');

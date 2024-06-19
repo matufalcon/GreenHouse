@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-06-2024 a las 00:27:57
+-- Tiempo de generación: 19-06-2024 a las 18:40:21
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.1.25
 
@@ -20,37 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bd_greenhouse`
 --
-
-DELIMITER $$
---
--- Procedimientos
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `BuscarCabañaId` (IN `cabañaId` INT)   BEGIN
-    SELECT c.*, cap.`capacidad-nombre` AS capacidad, e.`estado-nombre` AS estado
-    FROM `cabañas` c
-    JOIN `capacidad` cap ON cap.`capacidad-id` = c.`capacidad-id`
-    JOIN `estado` e ON e.`estado-id` = c.`estado-id`
-    WHERE c.`cabaña-id` = cabañaId;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarCabañas` (IN `fechaEntrada` DATE, IN `fechaSalida` DATE)   BEGIN
-    SELECT c.*, cap.`capacidad-nombre` AS capacidad, e.`estado-nombre` AS estado
-    FROM `cabañas` c
-    LEFT JOIN `reservas` r ON r.`cabaña-id` = c.`cabaña-id` 
-    JOIN `capacidad` cap ON cap.`capacidad-id` = c.`capacidad-id`
-    JOIN `estado` e ON e.`estado-id` = c.`estado-id`
-    WHERE r.`reserva-id` IS NULL
-        OR (r.`fecha-entrada` > fechaSalida OR r.`fecha-salida` < fechaEntrada);
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerTodasLasCabañas` ()   BEGIN
-    SELECT c.*, e.`estado-nombre` AS nombre_estado, cap.`capacidad-nombre` AS capacidad
-    FROM `cabañas` c
-    JOIN `estado` e ON e.`estado-id` = c.`estado-id`
-    JOIN `capacidad` cap ON cap.`capacidad-id` = c.`capacidad-id`;
-END$$
-
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -128,6 +97,15 @@ CREATE TABLE `medios_de_pagos` (
   `mediosPago-nombre` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Volcado de datos para la tabla `medios_de_pagos`
+--
+
+INSERT INTO `medios_de_pagos` (`mediosPago-id`, `mediosPago-nombre`) VALUES
+(1, 'Transferencia'),
+(2, 'Tarjeta de Débito'),
+(3, 'Tarjeta de Crédito');
+
 -- --------------------------------------------------------
 
 --
@@ -145,6 +123,13 @@ CREATE TABLE `reservas` (
   `cabaña-id` int(11) NOT NULL,
   `mediosPago-id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `reservas`
+--
+
+INSERT INTO `reservas` (`reserva-id`, `fecha-entrada`, `fecha-salida`, `cantHuesped`, `monto`, `fecha-pago`, `usuario-id`, `cabaña-id`, `mediosPago-id`) VALUES
+(2, '2024-06-28', '2024-06-29', 5, 309111.00, '2024-06-19', 2, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -262,19 +247,19 @@ ALTER TABLE `capacidad`
 -- AUTO_INCREMENT de la tabla `estado`
 --
 ALTER TABLE `estado`
-  MODIFY `estado-id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `estado-id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `medios_de_pagos`
 --
 ALTER TABLE `medios_de_pagos`
-  MODIFY `mediosPago-id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `mediosPago-id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `reserva-id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `reserva-id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_usuario`
